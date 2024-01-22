@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bin.spark.mapper.ShopModelMapper">
+  <resultMap id="BaseResultMap" type="com.bin.spark.model.ShopModel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remark_score" jdbcType="DECIMAL" property="remarkScore" />
+    <result column="price_per_man" jdbcType="INTEGER" property="pricePerMan" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="distance" jdbcType="INTEGER" property="distance" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, created_at, updated_at, name, remark_score, price_per_man, latitude, longitude, 
+    category_id, tags, start_time, end_time, address, seller_id, icon_url
+  </sql>
+
+  <select id="recommend" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,ceil(1 + 1000*(2 * 6378.137* ASIN(SQRT(POW(SIN(PI() * (#{latitude} - latitude) / 360), 2) + COS(PI() * #{latitude} / 180)
+    * COS(latitude* PI() / 180) * POW(SIN(PI() * (#{longitude} - longitude) / 360), 2))))) AS distance
+    from shop order by (0.95*1/log10(distance)+ 0.05*remark_score/5)  DESC
+  </select>
+
+  <select id="search" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,ceil(1 + 1000*(2 * 6378.137* ASIN(SQRT(POW(SIN(PI() * (#{latitude} - latitude) / 360), 2) + COS(PI() * #{latitude} / 180)
+    * COS(latitude* PI() / 180) * POW(SIN(PI() * (#{longitude} - longitude) / 360), 2))))) AS distance
+    from shop where name like CONCAT('%',#{keyword},'%')
+    <if test="categoryId != null">
+      and category_id = #{categoryId}
+    </if>
+    <if test="tags != null">
+      and tags = #{tags}
+    </if>
+    <if test="orderby == null">
+      order by (0.95*1/log10(distance)+ 0.05*remark_score/5)  DESC
+    </if>
+    <if test="orderby == 1">
+      order by price_per_man ASC,id ASC
+    </if>
+  </select>
+
+
+  <select id="searchGroupByTags" resultType="java.util.Map">
+    select tags,count(1) as num from shop where name like CONCAT('%',#{keyword},'%')
+    <if test="categoryId != null">
+      and category_id = #{categoryId}
+    </if>
+    <if test="tags != null">
+      and tags = #{tags}
+    </if>
+    group by tags
+  </select>
+
+  <select id="buildEsQuery" resultType="java.util.Map">
+    select a.id,a.name,a.tags,
+      concat(a.latitude,',',a.longitude) as location,
+      a.remark_score,
+      a.price_per_man,
+      a.category_id,
+      b.name as category_name,
+      a.seller_id,
+      c.remark_score as seller_remark_score,
+      c.disabled_flag as seller_disabled_flag
+     from shop a
+     inner join category b on a.category_id = b.id
+     inner join seller c on c.id = a.seller_id
+     <where>
+       <if test="sellerId != null">
+         and c.id = #{sellerId}
+       </if>
+       <if test="categoryId != null">
+         and b.id = #{categoryId}
+       </if>
+       <if test="shopId != null">
+         and a.id = #{shopId}
+       </if>
+     </where>
+  </select>
+
+</mapper>
