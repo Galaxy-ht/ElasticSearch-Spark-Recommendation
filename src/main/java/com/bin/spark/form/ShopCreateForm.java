@@ -6,10 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-/**
- * Created by 斌~
- * 2020/9/14 16:37
- */
+
 @Data
 public class ShopCreateForm {
     @NotBlank(message = "服务名不能为空")

@@ -10,11 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author 斌~
- * @version 1.0
- * @date 2021/4/22 下午11:33
- */
+
 @Service
 public class RecommendService implements Serializable {
     @Autowired

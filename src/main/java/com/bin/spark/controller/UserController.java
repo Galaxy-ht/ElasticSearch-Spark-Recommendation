@@ -19,11 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Objects;
 
-/**
- * Created by 斌~
- * 2020/9/12 15:57
- * @author mac
- */
+
 @Controller
 @RequestMapping("/user")
 @Slf4j

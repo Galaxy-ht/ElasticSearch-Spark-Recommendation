@@ -31,11 +31,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Created by 斌~
- * 2020/9/14 16:18
- * @author mac
- */
 @Service
 @Slf4j
 public class ShopServiceImpl implements ShopService {

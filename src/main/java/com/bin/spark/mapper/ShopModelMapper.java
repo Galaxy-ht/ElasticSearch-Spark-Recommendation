@@ -9,9 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author mac
- */
+
 @Repository
 public interface ShopModelMapper extends MyMapper<ShopModel>{
     /**

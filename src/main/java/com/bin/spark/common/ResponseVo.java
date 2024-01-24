@@ -6,11 +6,7 @@ import org.springframework.validation.BindingResult;
 
 import java.util.Objects;
 
-/**
- * created by 斌~ on 2019-12-11
- * JsonInclude  不返回空属性
- * @author mac
- */
+
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class ResponseVo<T> {

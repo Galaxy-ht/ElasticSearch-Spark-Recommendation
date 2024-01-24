@@ -19,10 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 前端搜索功能
- * @author mac
- */
+
 @Controller("/shop")
 @RequestMapping("/shop")
 public class ShopController {

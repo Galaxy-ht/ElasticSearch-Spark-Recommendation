@@ -12,11 +12,7 @@ import java.util.Objects;
 import static com.bin.spark.common.ResponseEnum.ERROR;
 
 
-/**
- * 统一异常处理
- * created by 斌~ on 2019-12-12
- * @author mac
- */
+
 @ControllerAdvice
 @Slf4j
 public class RuntimeExceptionHandler {

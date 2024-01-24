@@ -19,9 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * 门店后台服务
- */
+
 @Controller("/admin/shop")
 @RequestMapping("/admin/shop")
 public class ShopController {

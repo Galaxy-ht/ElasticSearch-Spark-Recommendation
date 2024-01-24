@@ -21,10 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by 斌~
- * 2020/9/14 11:23
- */
+
 @Controller("/admin/category")
 @RequestMapping("/admin/category")
 public class CategoryController {

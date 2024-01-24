@@ -1,10 +1,6 @@
 package com.bin.spark.common;
 
-/**
- * @author 斌~
- * @version 1.0
- * @date 2020/9/13 11:38 下午
- */
+
 public class BusinessException extends RuntimeException {
 
     private Integer code;

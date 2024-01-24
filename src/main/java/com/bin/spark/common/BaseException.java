@@ -1,8 +1,6 @@
 package com.bin.spark.common;
 
-/**
- * Created by hzllb on 2019/7/9.
- */
+
 public class BaseException extends Exception {
     private CommonError commonError;
 

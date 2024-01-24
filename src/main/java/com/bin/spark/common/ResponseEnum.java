@@ -2,10 +2,7 @@ package com.bin.spark.common;
 
 import lombok.Getter;
 
-/**
- * created by 斌~ on 2019-12-11
- * @author mac
- */
+
 @Getter
 public enum ResponseEnum {
     /**

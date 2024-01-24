@@ -16,11 +16,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by 斌~
- * 2020/9/12 16:15
- * @author mac
- */
 @Slf4j
 @Service(value = "UserService")
 public class UserServiceImpl implements UserService {

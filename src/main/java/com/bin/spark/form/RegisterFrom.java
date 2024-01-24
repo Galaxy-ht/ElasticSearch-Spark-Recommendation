@@ -5,11 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-/**
- * @author 斌~
- * @version 1.0
- * @date 2020/9/13 9:09 上午
- */
+
 @Data
 public class RegisterFrom {
 

@@ -1,8 +1,6 @@
 package com.bin.spark.common;
 
-/**
- * Created by hzllb on 2019/7/9.
- */
+
 public class CommonRes {
 
     //表明读经请求的返回处理结果，"success"或"fail"

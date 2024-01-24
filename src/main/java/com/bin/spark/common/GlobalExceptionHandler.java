@@ -9,9 +9,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by bin on 2020/9/13.
- */
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

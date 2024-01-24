@@ -24,11 +24,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * @author 斌~
- * @version 1.0
- * @date 2020/9/13 10:23 下午
- */
+
 @Controller("/admin/seller")
 @RequestMapping("/admin/seller")
 public class SellerController {

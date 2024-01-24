@@ -1,8 +1,6 @@
 package com.bin.spark.common;
 
-/**
- * Created by hzllb on 2019/7/9.
- */
+
 public enum EmBusinessError {
 
     //通用的错误类型10000开头

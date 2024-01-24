@@ -14,11 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * @author 斌~
- * @version 1.0
- * @date 2020/9/13 10:20 下午
- */
+
 @Service
 public class SellerServiceImpl implements SellerService {
 
